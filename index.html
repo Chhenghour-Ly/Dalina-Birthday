@@ -244,6 +244,20 @@
         $(".box__letter").slideUp();
         $(".letter__border").slideUp();
     })
+
+
+
+    let mailBox = document.querySelector('.mail')
+    let boxmail = document.querySelector('.boxMail')
+    var close = document.querySelector('.fa-xmark')
+    mailBox.onclick = function () {
+        mailBox.classList.toggle('active')
+        boxmail.classList.add('active')
+    }
+
+    close.addEventListener('click', function () {
+        boxmail.classList.remove('active')
+    })
     let mailBox = document.querySelector('.mail');
     let boxmail = document.querySelector('.boxMail');
     let birthdaySong = document.getElementById("birthdaySong");
@@ -259,8 +273,6 @@
         mailBox.classList.toggle('active');
         boxmail.classList.add('active');
     };
-    
-
 </script>
 
 </html>
