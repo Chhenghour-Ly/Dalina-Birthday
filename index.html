@@ -270,6 +270,22 @@
         e.stopPropagation(); // Stops the click from reaching the mailbox or window
         boxmail.classList.remove('active');
         mailBox.classList.remove('active');
+        
+    };
+    // Ensure this matches the class in your HTML (<i class="fa-solid fa-xmark"></i>)
+    const closeBtn = document.querySelector('.fa-xmark');
+    const mailBox = document.querySelector('.mail');
+    const boxmail = document.querySelector('.boxMail');
+    
+    closeBtn.onclick = function (e) {
+    // 1. This stops the click from "bleeding" through to the mailbox
+    e.stopPropagation(); 
+    
+    // 2. Remove the active classes
+    boxmail.classList.remove('active');
+    mailBox.classList.remove('active');
+    
+    console.log("Exit button clicked and letter closed.");
     };
 </script>
 
