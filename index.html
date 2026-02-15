@@ -245,24 +245,21 @@
         $(".box__letter").slideUp();
         $(".letter__border").slideUp();
     })
+    let mailBox = document.querySelector('.mail');
+    let boxmail = document.querySelector('.boxMail');
+    let birthdaySong = document.getElementById("birthdaySong"); // Get the audio
+    var close = document.querySelector('.fa-xmark');
 
-
-
-    let mailBox = document.querySelector('.mail')
-    let boxmail = document.querySelector('.boxMail')
-    var close = document.querySelector('.fa-xmark')
     mailBox.onclick = function () {
-        mailBox.classList.toggle('active')
-        boxmail.classList.add('active')
-    }
+        // START MUSIC HERE
+        birthdaySong.play().catch(function(error) {
+            console.log("Music couldn't autoplay, but will start now!");
+        });
+    
+        mailBox.classList.toggle('active');
+        boxmail.classList.add('active');
+    };
 
-    close.addEventListener('click', function () {
-        boxmail.classList.remove('active')
-    })
-        $("#btn__letter").on("click", function () {
-        document.getElementById("happybirthday.mp3").play();
-        $(".box__letter").slideDown();
-    });
 </script>
 
 </html>
