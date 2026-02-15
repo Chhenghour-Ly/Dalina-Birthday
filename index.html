@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <audio id="birthdaySong" preload="auto" loop>
+    <audio id="birthdaySong" loop>
     <source src="audio/happybirthday.mp3" type="audio/mpeg">
     </audio>
     <div id="wrapper">
@@ -244,34 +244,32 @@
         $(".box__letter").slideUp();
         $(".letter__border").slideUp();
     })
-
-
-
-    let mailBox = document.querySelector('.mail')
-    let boxmail = document.querySelector('.boxMail')
-    var close = document.querySelector('.fa-xmark')
-    mailBox.onclick = function () {
-        mailBox.classList.toggle('active')
-        boxmail.classList.add('active')
-    }
-
-    close.addEventListener('click', function () {
-        boxmail.classList.remove('active')
-    })
     let mailBox = document.querySelector('.mail');
     let boxmail = document.querySelector('.boxMail');
     let birthdaySong = document.getElementById("birthdaySong");
+    let closeBtn = document.querySelector('.fa-xmark');
     
-    mailBox.onclick = function () {
-        // This force-starts the music
-        birthdaySong.play().then(() => {
-            console.log("Music started successfully!");
-        }).catch((error) => {
-            console.log("Music failed to start. Error:", error);
-        });
+    // --- 1. CLICK ANYWHERE FOR MUSIC ---
+    window.addEventListener('click', function() {
+        if (birthdaySong.paused) { // Only play if it's not already playing
+            birthdaySong.play().catch(function(error) {
+                console.log("Music play blocked:", error);
+            });
+        }
+    }, { once: true }); // 'once: true' ensures this only runs on the very first click
     
-        mailBox.classList.toggle('active');
+    // --- 2. CLICK MAILBOX TO OPEN ---
+    mailBox.onclick = function (e) {
+        e.stopPropagation(); // Prevents the 'window' click from firing again
+        mailBox.classList.add('active');
         boxmail.classList.add('active');
+    };
+    
+    // --- 3. CLICK X TO EXIT ---
+    closeBtn.onclick = function (e) {
+        e.stopPropagation(); // Stops the click from reaching the mailbox or window
+        boxmail.classList.remove('active');
+        mailBox.classList.remove('active');
     };
 </script>
 
