@@ -259,6 +259,11 @@
     close.addEventListener('click', function () {
         boxmail.classList.remove('active')
     })
+        $("#btn__letter").on("click", function () {
+        document.getElementById("mySong").play(); // This starts the music on click!
+        $(".box__letter").slideDown();
+        // ... the rest of your code
+    });
 </script>
 
 </html>
